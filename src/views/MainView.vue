@@ -9,7 +9,7 @@
             label-by="label"
             class="select-component"
             placeholder="Sorting"
-          ></vue-select>
+          />
         </div>
         <HeaderButtonsGroup :value="this.$route.query?.mode" />
       </div>
@@ -22,40 +22,40 @@
             v-for="(card, index) in getCardsList"
           />
         </template>
-        <template v-else>
-
-        </template>
+        <template v-else />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SideLeft from "../components/SideLeft.vue";
-import VueSelect from "vue-select";
-import { mapGetters } from "vuex"
-import AppCard from "@/components/AppCard";
-import HeaderButtonsGroup from "@/components/HeaderButtonsGroup";
+import VueSelect from 'vue-select';
+import { mapGetters } from 'vuex';
+import SideLeft from '../components/SideLeft.vue';
+import AppCard from '../components/AppCard.vue';
+import HeaderButtonsGroup from '../components/HeaderButtonsGroup.vue';
 
 export default {
-  name: "MainView",
-  components: {HeaderButtonsGroup, AppCard, SideLeft, VueSelect},
+  name: 'MainView',
+  components: {
+    HeaderButtonsGroup, AppCard, SideLeft, VueSelect,
+  },
   data() {
     return {
       value: 'asc',
       sort: [
-        {code: 'asc', label: 'Sort by Invoice number: asc'},
-        {code: 'desc', label: 'Sort by Invoice number: desc'}
+        { code: 'asc', label: 'Sort by Invoice number: asc' },
+        { code: 'desc', label: 'Sort by Invoice number: desc' },
       ],
     };
   },
   computed: {
     ...mapGetters(['getCardsList']),
     viewAsList() {
-      return this.$route.query?.mode === 'list'
-    }
+      return this.$route.query?.mode === 'list';
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">

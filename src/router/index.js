@@ -1,6 +1,6 @@
-import Router from 'vue-router'
-import MainView from '../views/MainView.vue'
-import Vue from "vue";
+import Router from 'vue-router';
+import Vue from 'vue';
+import MainView from '../views/MainView.vue';
 
 Vue.use(Router);
 
@@ -10,9 +10,9 @@ const router = new Router({
     {
       path: '/*',
       name: 'Main',
-      component: MainView
+      component: MainView,
     },
-  ]
-})
+  ],
+});
 
-export default router
+export default router;

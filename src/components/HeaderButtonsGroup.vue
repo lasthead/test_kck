@@ -1,6 +1,7 @@
 <template>
   <div class="buttons-group">
     <button
+      type="button"
       @click="goToView('list')"
       :class="[
         'buttons-group__button buttons-group__button--left',
@@ -9,6 +10,7 @@
       <img src="../assets/icons/icon-mode-1.svg" alt="">
     </button>
     <button
+      type="button"
       @click="goToView('table')"
       :class="[
         'buttons-group__button buttons-group__button--right',

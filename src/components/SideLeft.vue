@@ -1,16 +1,22 @@
 <template>
   <div class="side-left">
-    <button class="button__add"><img class="button__add_icon" src="../assets/icons/plus.svg" alt=""/> добавить</button>
+    <button
+      type="button"
+      class="button__add">
+      <img class="button__add_icon" src="../assets/icons/plus.svg" alt="" />
+      <span> добавить </span>
+    </button>
     <AppFilters class="filters" />
   </div>
 </template>
 
 <script>
-import AppFilters from "./AppFilters.vue";
+import AppFilters from './AppFilters.vue';
+
 export default {
-  name: "SideLeft",
-  components: {AppFilters}
-}
+  name: 'SideLeft',
+  components: { AppFilters },
+};
 </script>
 
 <style lang="scss" scoped>

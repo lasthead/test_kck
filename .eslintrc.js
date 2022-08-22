@@ -13,6 +13,11 @@ module.exports = {
   ],
   parserOptions: {
     parser: 'babel-eslint',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 13,
+    sourceType: 'module',
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production'

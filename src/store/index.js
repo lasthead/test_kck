@@ -1,30 +1,36 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import * as getters from './getters'
-import * as mutations from './mutations'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import * as getters from './getters';
+import * as mutations from './mutations';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
     cards: [
       {
         id: '1',
-        type: 'RUED'
+        type: 'RUED',
       },
       {
         id: '2',
-        type: 'RUED'
+        type: 'RUED',
       },
       {
         id: '3',
-        type: 'RUED'
-      }
-    ]
+        type: 'RUED',
+      },
+    ],
   },
-  getters,
-  mutations,
+  getters: {
+    getCardsList: (state) => state.cards
+  },
+  mutations: {
+    CREATE_CARD: (state, card) => {
+      state.cards.push(card);
+    }
+  },
   actions: {},
-})
+});
 
 export default store;
