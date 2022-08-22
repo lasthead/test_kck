@@ -1,0 +1,17 @@
+@import "./base.css";
+
+@font-face {
+    font-family: 'Roboto';
+    src: local("Roboto"),
+    url("./fonts/Roboto.woff2") format("woff2"),
+    url("./fonts/Roboto.woff") format("woff");
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

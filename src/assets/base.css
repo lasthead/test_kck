@@ -1,0 +1,21 @@
+:root {
+  --black: #2B2839;
+  --border: #F8F8F8;
+  --input-border: #D9D9D9;
+  --button-group-border: #647A8C;
+  --button-group-background: #E5E9EC;
+  --row-border: #F2F2F2;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+}
