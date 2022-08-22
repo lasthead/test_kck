@@ -7,12 +7,20 @@
     </header>
 
     <router-view />
+    <modal v-show="isModalActive" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import Modal from './components/AppModal.vue';
+
 export default {
   name: 'App',
+  components: { Modal },
+  computed: {
+    ...mapGetters(['isModalActive']),
+  },
 };
 </script>
 

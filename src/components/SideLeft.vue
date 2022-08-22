@@ -1,6 +1,8 @@
 <template>
   <div class="side-left">
     <button
+      @click="$emit('onAdd')"
+      @keydown="$emit('onAdd')"
       type="button"
       class="button__add">
       <img class="button__add_icon" src="../assets/icons/plus.svg" alt="" />

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <SideLeft class="left-content" />
+    <SideLeft @onAdd="showAddDialog" class="left-content" />
     <div class="right-content">
       <div class="content-header">
         <div class="select-wrapper">
@@ -30,7 +30,7 @@
 
 <script>
 import VueSelect from 'vue-select';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 import SideLeft from '../components/SideLeft.vue';
 import AppCard from '../components/AppCard.vue';
 import HeaderButtonsGroup from '../components/HeaderButtonsGroup.vue';
@@ -53,6 +53,12 @@ export default {
     ...mapGetters(['getCardsList']),
     viewAsList() {
       return this.$route.query?.mode === 'list';
+    },
+  },
+  methods: {
+    ...mapMutations(['SHOW_MODAL']),
+    showAddDialog() {
+      this.SHOW_MODAL();
     },
   },
 };
