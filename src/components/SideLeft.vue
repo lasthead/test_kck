@@ -8,7 +8,7 @@
       <img class="button__add_icon" src="../assets/icons/plus.svg" alt="" />
       <span> добавить </span>
     </button>
-    <AppFilters class="filters" />
+    <AppFilters v-model="computedValue" class="filters" />
   </div>
 </template>
 
@@ -18,6 +18,17 @@ import AppFilters from './AppFilters.vue';
 export default {
   name: 'SideLeft',
   components: { AppFilters },
+  props: ['value'],
+  computed: {
+    computedValue: {
+      get() {
+        return this.value;
+      },
+      set(newValue) {
+        this.$emit('input', newValue);
+      },
+    },
+  },
 };
 </script>
 
@@ -44,6 +55,10 @@ export default {
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
+
+    &:hover {
+      opacity: 0.9;
+    }
 
     &_icon {
       margin-right: 16px;

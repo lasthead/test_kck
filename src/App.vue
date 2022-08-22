@@ -7,7 +7,7 @@
     </header>
 
     <router-view />
-    <modal v-show="isModalActive" />
+    <modal v-if="isModalActive" />
   </div>
 </template>
 

@@ -4,7 +4,12 @@
     <div class="filters__border" />
     <label class="filter-input__wrapper">
       <span class="filter-input__label">Invoice number</span>
-      <input class="filter-input" placeholder="Enter value" type="text">
+      <input
+        class="filter-input"
+        placeholder="Enter value"
+        type="text"
+        @input="$emit('input', $event.target.value)"
+      >
     </label>
   </div>
 </template>

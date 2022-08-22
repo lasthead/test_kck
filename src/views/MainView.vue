@@ -1,10 +1,11 @@
 <template>
   <div class="wrapper">
-    <SideLeft @onAdd="showAddDialog" class="left-content" />
+    <SideLeft v-model="searchInvoice" @onAdd="showAddDialog" class="left-content" />
     <div class="right-content">
       <div class="content-header">
         <div class="select-wrapper">
           <vue-select
+            v-model="computedSort"
             :options="sort"
             label-by="label"
             class="select-component"
@@ -16,13 +17,20 @@
       <div class="page-content">
         <template v-if="viewAsList">
           <AppCard
+            @onEdit="handleEdit"
+            @onDelete="handleDelete"
             :key="card.id"
-            :name="'Card ' + (index + 1)"
-            :type="card.type"
-            v-for="(card, index) in getCardsList"
+            :params="card"
+            v-for="(card) in sortedList"
           />
         </template>
-        <template v-else />
+        <template v-else>
+          <TableViewCards
+            @onEdit="handleEdit"
+            @onDelete="handleDelete"
+            :items="sortedList"
+          />
+        </template>
       </div>
     </div>
   </div>
@@ -34,15 +42,21 @@ import { mapGetters, mapMutations } from 'vuex';
 import SideLeft from '../components/SideLeft.vue';
 import AppCard from '../components/AppCard.vue';
 import HeaderButtonsGroup from '../components/HeaderButtonsGroup.vue';
+import TableViewCards from '../components/TableViewCards.vue';
 
 export default {
   name: 'MainView',
   components: {
-    HeaderButtonsGroup, AppCard, SideLeft, VueSelect,
+    TableViewCards,
+    HeaderButtonsGroup,
+    AppCard,
+    SideLeft,
+    VueSelect,
   },
   data() {
     return {
-      value: 'asc',
+      sortVal: '',
+      searchInvoice: '',
       sort: [
         { code: 'asc', label: 'Sort by Invoice number: asc' },
         { code: 'desc', label: 'Sort by Invoice number: desc' },
@@ -51,14 +65,41 @@ export default {
   },
   computed: {
     ...mapGetters(['getCardsList']),
+    computedSort: {
+      get() {
+        return this.sortVal.code || this.sort[0].code;
+      },
+      set(newValue) {
+        this.sortVal = newValue;
+      },
+    },
     viewAsList() {
       return this.$route.query?.mode === 'list';
     },
+    sortedList() {
+      let list = this.getCardsList;
+
+      if (this.searchInvoice) {
+        list = list.filter((o) => o.invoiceNumber.includes(this.searchInvoice));
+      }
+
+      if (this.sortVal?.code === 'desc') {
+        return list.sort((a, b) => (a.invoiceNumber > b.invoiceNumber ? -1 : 1));
+      }
+
+      return list.sort((a, b) => (b.invoiceNumber < a.invoiceNumber ? 1 : -1));
+    },
   },
   methods: {
-    ...mapMutations(['SHOW_MODAL']),
+    ...mapMutations(['SHOW_MODAL', 'DELETE_CARD']),
     showAddDialog() {
       this.SHOW_MODAL();
+    },
+    handleEdit(e) {
+      this.SHOW_MODAL(e);
+    },
+    handleDelete(e) {
+      this.DELETE_CARD(e);
     },
   },
 };
