@@ -67,7 +67,7 @@ export default {
     ...mapGetters(['getCardsList']),
     computedSort: {
       get() {
-        return this.sortVal.code || this.sort[0].code;
+        return this.sortVal?.code || '';
       },
       set(newValue) {
         this.sortVal = newValue;
@@ -86,8 +86,11 @@ export default {
       if (this.sortVal?.code === 'desc') {
         return list.sort((a, b) => (a.invoiceNumber > b.invoiceNumber ? -1 : 1));
       }
+      if (this.sortVal?.code === 'asc') {
+        return list.sort((a, b) => (b.invoiceNumber < a.invoiceNumber ? 1 : -1));
+      }
 
-      return list.sort((a, b) => (b.invoiceNumber < a.invoiceNumber ? 1 : -1));
+      return list;
     },
   },
   methods: {
