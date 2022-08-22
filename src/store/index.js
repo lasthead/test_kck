@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import * as getters from './getters';
-import * as mutations from './mutations';
 
 Vue.use(Vuex);
 
@@ -23,12 +21,12 @@ const store = new Vuex.Store({
     ],
   },
   getters: {
-    getCardsList: (state) => state.cards
+    getCardsList: (state) => state.cards,
   },
   mutations: {
     CREATE_CARD: (state, card) => {
       state.cards.push(card);
-    }
+    },
   },
   actions: {},
 });
