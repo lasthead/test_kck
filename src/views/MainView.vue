@@ -39,10 +39,10 @@
 <script>
 import VueSelect from 'vue-select';
 import { mapGetters, mapMutations } from 'vuex';
-import SideLeft from '../components/SideLeft.vue';
-import AppCard from '../components/AppCard.vue';
-import HeaderButtonsGroup from '../components/HeaderButtonsGroup.vue';
-import TableViewCards from '../components/TableViewCards.vue';
+import SideLeft from '@/components/SideLeft';
+import AppCard from '@/components/AppCard.vue';
+import HeaderButtonsGroup from '@/components/HeaderButtonsGroup.vue';
+import TableViewCards from '@/components/TableViewCards.vue';
 
 export default {
   name: 'MainView',

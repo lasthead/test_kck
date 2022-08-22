@@ -24,10 +24,8 @@ module.exports = {
       ? ['warn', { allow: ['warn', 'error'] }]
       : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'import/extensions': ['error', 'always', {
-      js: 'never',
-      vue: 'never',
-    }],
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
   },
   overrides: [
     {
