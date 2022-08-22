@@ -13,7 +13,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import Modal from './components/AppModal.vue';
+import Modal from './components/AppModal';
 
 export default {
   name: 'App',

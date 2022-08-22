@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import CardEditTools from './CardEditTools.vue';
+import CardEditTools from './CardEditTools';
 
 export default {
   name: 'TableViewCards',

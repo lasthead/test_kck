@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import AppFilters from './AppFilters.vue';
+import AppFilters from './AppFilters';
 
 export default {
   name: 'SideLeft',
