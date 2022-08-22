@@ -2,8 +2,31 @@
   <div class="card">
     <div class="card__header">
       <div class="title">{{ name }}</div>
-      <div class="options">
-        <img src="../assets/icons/icon-dottes.svg" alt="">
+      <div tabindex="0" @blur="showSubmenu = false" class="options">
+        <img
+          @click="handleSubmenu"
+          @keydown="handleSubmenu"
+          src="../assets/icons/icon-dottes.svg"
+          alt=""
+        >
+        <ul v-show="showSubmenu" class="submenu submenu__list">
+          <li
+            class="submenu__item"
+            @click="handleEdit"
+            @keydown="handleEdit"
+          >
+            <img class="submenu__icon" src="../assets/icons/edit.svg" alt="">
+            редактировать
+          </li>
+          <li
+            class="submenu__item"
+            @click="handleDelete"
+            @keydown="handleDelete"
+          >
+            <img class="submenu__icon" src="../assets/icons/remove.svg" alt="">
+            удалить
+          </li>
+        </ul>
       </div>
     </div>
     <div class="card__content">
@@ -19,6 +42,11 @@
 <script>
 export default {
   name: 'AppCard',
+  data() {
+    return {
+      showSubmenu: false,
+    };
+  },
   props: {
     name: {
       type: String,
@@ -28,6 +56,13 @@ export default {
       type: String,
       default: '',
     },
+  },
+  methods: {
+    handleSubmenu() {
+      this.showSubmenu = !this.showSubmenu;
+    },
+    handleEdit() {},
+    handleDelete() {},
   },
 };
 </script>
@@ -62,8 +97,42 @@ export default {
     }
 
     .options {
+      position: relative;
       font-weight: bolder;
       font-size: 26px;
+      cursor: pointer;
+    }
+  }
+  .submenu {
+    right: 0;
+    position: absolute;
+    z-index: 1;
+
+    background: white;
+    padding: 10px 10px 2px;
+    box-shadow: 0 4px 4px rgba(182, 182, 182, 0.25);
+
+    font-size: 14px;
+
+    &__list {
+      list-style: none;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      padding-bottom: 8px;
+
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    &__icon {
+      width: 20px;
+      padding-right: 8px;
     }
   }
 </style>

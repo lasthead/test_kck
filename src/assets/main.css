@@ -7,6 +7,10 @@
     url("./fonts/Roboto.woff") format("woff");
 }
 
+body {
+  min-width: 1380px;
+}
+
 * {
     font-family: "Roboto", sans-serif;
 }
