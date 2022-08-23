@@ -1,4 +1,4 @@
-# test-task
+# test task for KCK technologies. Estimated: 10 hours
 
 ## Project setup
 ```
