@@ -2,9 +2,10 @@
   <div class="filters">
     <div class="filters__title">Filters</div>
     <div class="filters__border" />
-    <label class="filter-input__wrapper">
+    <label for="invoiceFilter" class="filter-input__wrapper">
       <span class="filter-input__label">Invoice number</span>
       <input
+        id="invoiceFilter"
         class="filter-input"
         placeholder="Enter value"
         type="text"

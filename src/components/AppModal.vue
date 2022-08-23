@@ -7,9 +7,10 @@
       <div class="modal__title">Добавление</div>
       <div class="modal__content">
         <div class="modal__content-row">
-          <label class="modal__input-wrapper">
+          <label for="invoiceNum" class="modal__input-wrapper">
             <span class="modal__content-label-name">Номер накладной</span>
             <input
+              id="invoiceNum"
               v-model="form.invoiceNumber"
               class="modal__input"
               placeholder="Введите значение"
